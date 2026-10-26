@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "budgester.machines",
+  "name": "Machines",
+  "version": "0.1.0",
+  "author": "Martin Stevens",
+  "license": "MIT",
+  "description": "Rebuild a freshly installed machine from your Ansible repo, and see whether it still matches that repo.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Machines",
+    "description": "Set up a fresh install from your machines repo, then see whether this machine has drifted from it.",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "repo": "budgester/machines",
+      "repoPath": "~/Projects/machines",
+      "checkIntervalMin": 60
+    },
+    "schema": [
+      {
+        "key": "repo",
+        "type": "string",
+        "label": "GitHub repo",
+        "defaultValue": "budgester/machines",
+        "description": "owner/name of the repo with bootstrap.sh and status.sh."
+      },
+      {
+        "key": "repoPath",
+        "type": "string",
+        "label": "Where it is cloned",
+        "defaultValue": "~/Projects/machines"
+      },
+      {
+        "key": "checkIntervalMin",
+        "type": "integer",
+        "label": "Check every (minutes)",
+        "min": 5,
+        "max": 1440,
+        "step": 5,
+        "defaultValue": 60
+      }
+    ]
+  }
+}
